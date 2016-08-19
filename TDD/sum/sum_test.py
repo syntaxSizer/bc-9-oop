@@ -13,8 +13,8 @@ class MySumTests(unittest.TestCase):
         self.assertEqual(result,15,'test faild testcase 5 + 10')
         self.assertEqual(my_sum(10,15),25)
     def test_none_numbers(self):
-        result = my_sum('x','y')
-        self.assertRaises(result,'xy','test faild type error')
+        with self.assertRaises(TypeError):
+            my_sum('a','b')
         
 if __name__ =='__main__':
    unittest.main() 
