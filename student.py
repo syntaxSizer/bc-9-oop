@@ -1,21 +1,31 @@
-#/usr.bin.python
-from datetime import datetime 
+#/usr/bin/python
+import time
 class Student(object):
-    count =0
-	def __init__(self, first_name, last_name,id_number, location = 'Hogwarts',date):
-		count +=1
-		self.first_name = first_name
-		self.last_name = last_name
-		self.__id_number = Student.count
-		self.date = datetime.today()
-		# generate unique id
-	def attend_class(self, **kwargs):
-		'''
-	    default values:
-	    loc = ''Hogwarts	
-	    date = current_date
-	    teacher = 'Alex'
-	    '''
-	    pass
-s1 = Student('kevin','Chiteri','UG')
-s1 = Student('Allan','M.','UG')
+    country = {
+        'KE': 'Kenya',
+        'NG': 'Nigeria',
+        'UG': 'Uganda',
+        'TZ': 'Tanzania',
+        'SD': 'Sudan'
+        }
+    class_list=[]
+    myId=0
+    def __init__(self,fName,lName,cc="KE"):
+        Student.myId+=1
+        self.id=Student.myId
+        self.fName=fName
+        self.lName=lName
+        self.applcant_country = Student.country[cc]
+
+    def attend_class(self, **kwargs):
+        self.loc=kwargs.setdefault('loc','Hogwarts')
+        self.date=kwargs.setdefault("date", time.strftime("%c"))
+        self.teacher=kwargs.setdefault('teacher','alex')
+        Student.class_list.append((self.date,self.fName,self.lName,self.id,self.loc,self.teacher,self.applcant_country))
+      
+   
+    def specific_day_attendees(self, date=time.strftime("%c")):
+        for item in Student.class_list:
+            if item[0]==date:
+                print(item)
+
