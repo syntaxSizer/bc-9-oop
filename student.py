@@ -9,10 +9,10 @@ class Student(object):
         'SD': 'Sudan'
         }
     class_list=[]
-    myId=0
+    Id=0
     def __init__(self,fName,lName,cc="KE"):
-        Student.myId+=1
-        self.id=Student.myId
+        Student.Id+=1
+        self.id=Student.Id
         self.fName=fName
         self.lName=lName
         self.applcant_country = Student.country[cc]
